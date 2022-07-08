@@ -12,7 +12,7 @@ Group project for Global AI Hub Pythoon Bootcamp
 |Zeynep Yiğit|
 
 ### Project Description
-Basic student grade system in terminal.
+Basic student grade system in Python.
 
 #### Rules
 * This system will be implemented by Python.
