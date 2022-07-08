@@ -1,5 +1,5 @@
 # PYBTCM2_learnPython
-Group project for Global AI Hub Pythoon Bootcamp
+Group project for Global AI Hub Python Bootcamp
 ## Group Members
 | Name |
 | ------------- |
