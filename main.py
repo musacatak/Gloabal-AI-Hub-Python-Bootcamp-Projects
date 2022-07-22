@@ -1,9 +1,5 @@
 import pandas as pd
 import openpyxl
-import re
-
-
-alpha = re.compile(r"[^a-zA-Z]")
 
 lesson_list = ['Math', 'Physics', 'Chemistry', 'Biology', 'Geography', 'History', 'English', 'Turkish']
 
@@ -50,28 +46,28 @@ def gradeCalculator(points):
         return 'D'
     elif points >= 50 and points < 60:
         return 'F'
+    else:
+        return 'FF'
 
 
 def addNewStudent(studentList):
     name = str(input("Name: "))
-    # validate name input with regex (only alphabetical characters)
-    if alpha.search(name):
-        print("Invalid value , please enter a valid value (use only alphabetical) !")
-        main()
-    
+    # validate name input
+    while not name.isalpha():
+        print("Invalid value , please enter a valid value !")
+        name = str(input("Name: "))
+        continue
     surname = str(input("Surname: "))
     # validate surname input with regex (only alphabetical characters)
-    if alpha.search(surname):
-        print("Invalid value , please enter a valid value (use only alphabetical) !")
-        main()
-    
-    # girilen değer rakamlardan oluşmalı ve benzersiz olmalı.
+    while not surname.isalpha():
+        print("Invalid value , please enter a valid value !")
+        surname = str(input("Surname: "))
+        continue
+    # girilen değer rakamlardan oluşmalı ve benzersiz olmalı(olmasa da olur).
     studentId = int(input("ID: "))
-   
     
     # girilen değer 0-100 arasında olmalı ve rakamlar dışında karakter içermemeli
     points = int(input("Point: "))
-    
     
     studentList.append(tuple((name, surname, studentId, points)))
     print("Student added successfully !\n")
