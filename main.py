@@ -1,8 +1,43 @@
 import pandas as pd
 import openpyxl
+import re
 
-lesson = input("Please enter lesson name: ")
 
+alpha = re.compile(r"[^a-zA-Z]")
+
+lesson_list = ['Math', 'Physics', 'Chemistry', 'Biology', 'Geography', 'History', 'English', 'Turkish']
+
+
+def choose_lesson():
+    i = 0
+    for lessons in lesson_list:
+        print(f"{i} - {lessons}")
+        i += 1
+    global lesson 
+    choice = input(str("Choose a lesson: "))
+    if choice == '0':
+        lesson = lesson_list[0]
+    elif choice == '1':
+        lesson = lesson_list[1]
+    elif choice == '2':
+        lesson = lesson_list[2]
+    elif choice == '3':
+        lesson = lesson_list[3]
+    elif choice == '4':
+        lesson = lesson_list[4]
+    elif choice == '5':
+        lesson = lesson_list[5]
+    elif choice == '6':
+        lesson = lesson_list[6]
+    elif choice == '7':
+        lesson = lesson_list[7]
+    else:
+        print("Invalid value , please enter a valid value !")
+        choose_lesson()
+    
+    
+
+choose_lesson()
 
 def gradeCalculator(points):
     if points >= 90 and points <= 100:
@@ -18,11 +53,28 @@ def gradeCalculator(points):
 
 
 def addNewStudent(studentList):
-    name = input("Name: ")
-    surname = input("Surname: ")
+    name = str(input("Name: "))
+    # validate name input with regex (only alphabetical characters)
+    if alpha.search(name):
+        print("Invalid value , please enter a valid value (use only alphabetical) !")
+        main()
+    
+    surname = str(input("Surname: "))
+    # validate surname input with regex (only alphabetical characters)
+    if alpha.search(surname):
+        print("Invalid value , please enter a valid value (use only alphabetical) !")
+        main()
+    
+    # girilen değer rakamlardan oluşmalı ve benzersiz olmalı.
     studentId = int(input("ID: "))
+   
+    
+    # girilen değer 0-100 arasında olmalı ve rakamlar dışında karakter içermemeli
     points = int(input("Point: "))
+    
+    
     studentList.append(tuple((name, surname, studentId, points)))
+    print("Student added successfully !\n")
 
 def removeStudent(studentList,id):
     for student in studentList:
