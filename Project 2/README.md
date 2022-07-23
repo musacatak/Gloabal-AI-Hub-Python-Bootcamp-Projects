@@ -22,7 +22,7 @@ Basic student grade system in Python.
 ##### Task
 (Dataset URL: https://www.kaggle.com/datasets/luiscorter/netflix-original-films-imdb-scores )
 
-1. What are the languages of the long-running movies in dataset? Visualize.
+* What are the languages of the long-running movies in dataset? Visualize.
 * Evaluate IMDB scores of the movies shot in the genre of Documentary between 2019 January and 2020 June, and visualize.
 * What genre has the highest IMDB score among movies made in English?
 * What is the average runtime of Hindi movies?
@@ -37,3 +37,10 @@ Basic student grade system in Python.
 * Which year has the highest total runtime value?
 * What is the genre which each language is used the most?
 * Is there any outlier data in dataset? Explain.
+
+###### Instructions
+
+* When you terminate the main file, you can access the main menu that contains all questions that you asked before.
+* Select a number to reach answer of relevant question.
+* Then if you want to keep going with other questions type 1 ,otherwise type 2 to exit.
+* You can check answers from charts and terminal output.
