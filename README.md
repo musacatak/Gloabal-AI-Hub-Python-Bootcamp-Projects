@@ -11,6 +11,7 @@ Group project for Global AI Hub Python Bootcamp.
 |Adem Hatay|
 
 ### Projects Description
+* Project Document : https://docs.google.com/document/d/1QAOFnc_JZlft6MhJVd6Ijuxny0sVn7WD/preview?rtpof=true&sd=true&pru=AAABge3ZzWc*bHMms98glNMM-SxmgN0lxg
 #### Project 1
 * Basic student grade system in Python.
 #### Project 2
