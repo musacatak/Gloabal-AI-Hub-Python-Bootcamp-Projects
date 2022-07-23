@@ -1,15 +1,14 @@
 # PYBTCM2_learnPython
-Group project for Global AI Hub Python Bootcamp
+Group project for Global AI Hub Python Bootcamp.
+
 ## Group Members
-| Name |
+| Name & Surname |
 | ------------- |
 |Ahmet Musa Çatak|
 |Nesrin Yakar|
-|Baha Büçge|
 |Alperen Özdemir|
 |Ahmet Çakmak|
 |Adem Hatay|
-|Zeynep Yiğit|
 
 ### Project Description
 Basic student grade system in Python.
