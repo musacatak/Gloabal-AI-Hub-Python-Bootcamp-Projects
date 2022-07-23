@@ -22,3 +22,7 @@ Basic student grade system in Python.
 * Choose a lesson for the system. (Math,Physic,Linear Algebra etc.)
 * Set the point gaps. (Ex: 100-80 -> A , 80-60 -> B)
 * Create a system that take inputs like name,surname,id,examPoints,pass/fail with these datas create a dataframe  and hold these datas in excel file.
+
+###### Instructions
+* First execute the 'main.py' file.
+* When you execute to main ,you will access the choseLesson screen.(fig1) ![alt text](https://github.com/[musacatak]/Gloabal-AI-Hub-Python-Bootcamp-Projects]/blob/[main]/fig1.png?raw=true)
