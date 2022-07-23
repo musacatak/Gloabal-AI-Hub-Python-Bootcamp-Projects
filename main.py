@@ -10,7 +10,7 @@ def choose_lesson():
         print(f"{i} - {lessons}")
         i += 1
     global lesson 
-    choice = input(str("Choose a lesson: "))
+    choice = input(str("Choose a lesson: \n"))
     if choice == '0':
         lesson = lesson_list[0]
     elif choice == '1':
@@ -49,7 +49,11 @@ def gradeCalculator(points):
     else:
         return 'FF'
 
-
+def checkDuplicationId(studentList,ID):
+    for i in studentList:
+        if i[2] == ID:
+            return False
+    return True
 def addNewStudent(studentList):
     name = str(input("Name: "))
     # validate name input
@@ -64,10 +68,34 @@ def addNewStudent(studentList):
         surname = str(input("Surname: "))
         continue
     # girilen değer rakamlardan oluşmalı ve benzersiz olmalı(olmasa da olur).
-    studentId = int(input("ID: "))
+    while True:
+        studentId = -1
+        try:
+            studentId = int(input("ID: "))
+        except ValueError:
+            print("Please enter a integer to Student ID, please be careful about ID duplication !")
+
+        if studentId != -1:
+            if checkDuplicationId(studentList, studentId):
+                break
+            else:
+                print("There already a student whose student Id is equal",studentId,". Please enter correct ID!")
     
     # girilen değer 0-100 arasında olmalı ve rakamlar dışında karakter içermemeli
-    points = int(input("Point: "))
+    while True:
+        points = -1
+        key = True
+        try:
+            points = int(input("Point: "))
+        except ValueError:
+            print("Please enter a integer between 0-100 to Point!")
+            key = False
+        if key and (points > 100 or points <0):
+            print("Please enter a integer between 0-100 to Point!")
+            points = -1
+        if points != -1:
+            break
+
     
     studentList.append(tuple((name, surname, studentId, points)))
     print("Student added successfully !\n")
@@ -77,7 +105,7 @@ def removeStudent(studentList,id):
     for student in studentList:
         if(id == student[2]):
             studentList.remove(student)
-    print("The student that ID is entered has removed successfully.")
+    print("The student that ID is",id," has removed successfully.")
     exitOrCont()
 
 
@@ -114,11 +142,12 @@ def printStudentGrades(studentGrade):
     exitOrCont()
 
 def exitOrCont():
-    inp = int(input('Chose a following operands:'
-                    '1. continue\n'
-                    '2. exit\n'))
-    if inp == 2:
+    x = input("1.Continue\n2.Exit")
+    if x == "2":
         exit()
+    elif x != "1":
+        print("Invalid value! Please enter 1 to continue, 2 to exit.")
+        exitOrCont()
 
 def main():
     choose_lesson()
@@ -137,44 +166,51 @@ def main():
         operand = int(input("Please choose an operand: "))
 
         if operand == 1:
-            type = int(input("how do you want to enter student info:\n"
-                             "1. manual (type one by one\n"
-                             "2. enter with .xlsx file that created before\n"))
-            if type == 1:
-                size = int(input('How many students you want to enter:'))
-                for i in range(size):
-                    addNewStudent(studentList)
-            elif type == 2:
-                df1 = pd.read_excel('studentsList.xlsx', sheet_name='Sayfa1')
-                studentList = df1[['Name', 'Surname', 'ID', 'Points']].values.tolist()
-                print("Student list is added successfully!")
-                exitOrCont()
+            while True:
+                type = int(input("how do you want to enter student info:\n"
+                                 "1. Manual: (type one by one)\n"
+                                 "2. Enter with .xlsx file that created before from path:'studentList.xlsx'\n"))
+                if type == 1:
+                    size = int(input('How many students you want to enter:'))
+                    for i in range(size):
+                        addNewStudent(studentList)
+                    break
+                elif type == 2:
+                    df1 = pd.read_excel('studentsList.xlsx', sheet_name='Sayfa1')
+                    studentList = df1[['Name', 'Surname', 'ID', 'Points']].values.tolist()
+                    print("\nStudent list is added successfully!\n")
+                    exitOrCont()
+                    break
+                else:
+                    print("Invalid value, please enter a valid value (1 or 2).")
         elif operand == 2:
             if len(studentList) == 0:
-                print('Please fill the studentList first. There are no any student to remove')
+                print('\nPlease fill the studentList first. There are no any student to remove\n')
             else:
                 rmStId = int(input('Enter student ID to remove: '))
                 removeStudent(studentList, rmStId)
         elif operand == 3:
-            print('Editing section will be add later!')
+            print('\nEditing section will be add later!\n')
             exitOrCont()
         elif operand == 4:
             studentGrades = finalTask(studentList)
+            print("\nStudent Grades extraction to excel file has completed successfully.\n")
+            exitOrCont()
         elif operand == 5:
             if len(studentList) == 0:
-                print('Please fill the studentList first. There are no any students to print')
+                print('\nPlease fill the studentList first. There are no any students to print\n')
             else:
                 printStudentList(studentList)
         elif operand == 6:
             if len(studentGrades) == 0:
-                print('Please fill the studentGrades first. There are no any data to print')
+                print('\nPlease fill the studentGrades first. There are no any data to print\n')
                 exitOrCont()
             else:
                 printStudentGrades(studentGrades)
         elif operand == 7:
             break
         else:
-            print('Invalid value , please enter a valid value !')
+            print('\nInvalid value , please enter a valid value !\n')
             exitOrCont()
 
 
