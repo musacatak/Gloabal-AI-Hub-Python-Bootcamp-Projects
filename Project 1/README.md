@@ -25,4 +25,5 @@ Basic student grade system in Python.
 
 ###### Instructions
 * First execute the 'main.py' file.
-* When you execute to main ,you will access the choseLesson screen.(fig1) ![alt text](https://github.com/[musacatak]/Gloabal-AI-Hub-Python-Bootcamp-Projects]/blob/[main]/fig1.png?raw=true)
+* When you execute to main ,you will access the choseLesson screen.(fig1) 
+![alt text](https://github.com/[musacatak]/Gloabal-AI-Hub-Python-Bootcamp-Projects]/blob/[main]/fig1.jpg?raw=true)
