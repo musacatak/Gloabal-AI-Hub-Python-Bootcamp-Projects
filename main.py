@@ -33,7 +33,7 @@ def choose_lesson():
     
     
 
-choose_lesson()
+
 
 def gradeCalculator(points):
     if points >= 90 and points <= 100:
@@ -71,11 +71,14 @@ def addNewStudent(studentList):
     
     studentList.append(tuple((name, surname, studentId, points)))
     print("Student added successfully !\n")
+    exitOrCont()
 
 def removeStudent(studentList,id):
     for student in studentList:
         if(id == student[2]):
             studentList.remove(student)
+    print("The student that ID is entered has removed successfully.")
+    exitOrCont()
 
 
 def finalTask(studentList):
@@ -101,22 +104,24 @@ def printStudentList(studentList):
         indx.append(i + 1)
     df = pd.DataFrame(studentList, index=indx, columns=['Name', 'Surname', 'Student ID', 'Points'])
     print(df)
-    inp = int(input('1. continue\n'
-                '2. exit\n'))
-    if inp == 2:
-        exit()
+    exitOrCont()
 def printStudentGrades(studentGrade):
     indx = []
     for i in range(len(studentGrade)):
         indx.append(i + 1)
     df = pd.DataFrame(studentGrade, index=indx, columns=['Student ID', 'Grade', 'Succes'])
     print(df)
-    inp = int(input('1. continue\n'
+    exitOrCont()
+
+def exitOrCont():
+    inp = int(input('Chose a following operands:'
+                    '1. continue\n'
                     '2. exit\n'))
     if inp == 2:
         exit()
-    return 'a'
+
 def main():
+    choose_lesson()
     studentList = []
     studentGrades = []
     exit = True
@@ -142,6 +147,8 @@ def main():
             elif type == 2:
                 df1 = pd.read_excel('studentsList.xlsx', sheet_name='Sayfa1')
                 studentList = df1[['Name', 'Surname', 'ID', 'Points']].values.tolist()
+                print("Student list is added successfully!")
+                exitOrCont()
         elif operand == 2:
             if len(studentList) == 0:
                 print('Please fill the studentList first. There are no any student to remove')
@@ -149,7 +156,8 @@ def main():
                 rmStId = int(input('Enter student ID to remove: '))
                 removeStudent(studentList, rmStId)
         elif operand == 3:
-            print('Editing will be add :)')
+            print('Editing section will be add later!')
+            exitOrCont()
         elif operand == 4:
             studentGrades = finalTask(studentList)
         elif operand == 5:
@@ -160,12 +168,14 @@ def main():
         elif operand == 6:
             if len(studentGrades) == 0:
                 print('Please fill the studentGrades first. There are no any data to print')
+                exitOrCont()
             else:
                 printStudentGrades(studentGrades)
         elif operand == 7:
             break
         else:
             print('Invalid value , please enter a valid value !')
+            exitOrCont()
 
 
 main()
