@@ -101,7 +101,7 @@ def main():
                 rmStId = int(input('Enter student ID to remove: '))
                 removeStudent(studentList, rmStId)
         elif operand == 3:
-            print('editing will be add in a week')
+            print('Editing will be add :)')
         elif operand == 4:
             studentGrades = finalTask(studentList)
         elif operand == 5:
