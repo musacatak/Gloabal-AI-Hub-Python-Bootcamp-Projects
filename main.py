@@ -105,8 +105,10 @@ def removeStudent(studentList,id):
     for student in studentList:
         if(id == student[2]):
             studentList.remove(student)
-    print("The student that ID is",id," has removed successfully.")
-    exitOrCont()
+            print("The student that ID is",id," has removed successfully.")
+            return True
+    return False
+
 
 
 def finalTask(studentList):
@@ -156,9 +158,9 @@ def main():
     exit = True
     while exit:
         print(
-            "1. add a new student to list:\n"
-            "2. remove a student from list\n"
-            "3. edit a student from a list\n"
+            "1. Add a new student to list:\n"
+            "2. Remove a student from list\n"
+            "3. Edit a student from a list\n"
             "4. Create the excel file\n"
             "5. Print current student List\n"
             "6. Print current Student Grades\n"
@@ -187,8 +189,25 @@ def main():
             if len(studentList) == 0:
                 print('\nPlease fill the studentList first. There are no any student to remove\n')
             else:
-                rmStId = int(input('Enter student ID to remove: '))
-                removeStudent(studentList, rmStId)
+                rmStId = -1
+                while True:
+                    rmStId = -1
+                    try:
+                        rmStId = int(input('Enter student ID to remove: '))
+                    except ValueError:
+                        print("Please enter a integer to Student ID that will be deleted, please be careful!")
+
+                    if rmStId != -1:
+                        key = removeStudent(studentList, rmStId)
+                        if not key:
+                            print("There are no any student whose Id is ",rmStId," to delete.Please enter a correct Id !")
+                            continue
+                        exitOrCont()
+                        break
+
+
+
+
         elif operand == 3:
             print('\nEditing section will be add later!\n')
             exitOrCont()
