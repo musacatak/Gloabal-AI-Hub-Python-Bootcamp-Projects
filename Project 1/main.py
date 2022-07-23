@@ -158,7 +158,7 @@ def main():
     exit = True
     while exit:
         print(
-            "1. Add a new student to list:\n"
+            "1. Add a new student to list\n"
             "2. Remove a student from list\n"
             "3. Edit a student from a list\n"
             "4. Create the excel file\n"
